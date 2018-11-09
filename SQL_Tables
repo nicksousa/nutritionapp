@@ -1,0 +1,54 @@
+CREATE TABLE User (
+	userID integer auto_increment,
+	sex char(1),
+	first varchar(32),
+	last varchar(32),
+	birth date,
+	password varchar(32),
+	dietPlan varchar(32),
+	fat integer,
+	carbs integer,
+	protein integer,
+	alcohol integer,
+	primary key (UserID)
+);
+CREATE TABLE Ingredients (
+	userID integer,
+	ingredientID integer,
+	frequency integer,
+	name varchar(32),
+	primary key (IngredientID),
+	foreign key (UserID) references User(UserID)
+);
+CREATE TABLE Bookmarked (
+	pointer varchar(32),
+name varchar(32),
+mealID integer,
+	primary key (MealID)
+);
+CREATE TABLE UserMeals (
+	userID integer,
+	mealID integer,
+	rating integer,
+	isFavorite integer,
+	primary key(MealID),
+	foreign key (UserID) references User(UserID)
+);
+CREATE TABLE Daily (
+	userID integer,
+	day date,
+	proteins float,
+	carbs float,
+	fats float,
+	alcohol float,
+	primary key (Day),
+	foreign key (UserID) references User(UserID)
+);
+CREATE TABLE UserInfo (
+	userID integer,
+	weight float,
+	height integer,
+	primary key (userID),
+	foreign key (UserID) references User(UserID)
+);
+ 
